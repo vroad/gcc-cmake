@@ -11,5 +11,8 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
       && mkdir /usr/bin/cmake \
       && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
       && rm /tmp/cmake-install.sh
+RUN apt-get update \
+      && apt-get install -y ninja-build \
+      && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
